@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ee.praktika.springdemo.DAO.CustomerDAO;
 import ee.praktika.springdemo.entity.Customer;
-import ee.praktikaspringdemo.DAO.CustomerDAO;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -21,6 +21,13 @@ public class CustomerServiceImpl implements CustomerService {
     public List<Customer> getCustomers(){
 
         return customerDAO.getCustomers();
+    }
+
+    @Override
+    @Transactional
+    public void saveCustomer( Customer theCustomer ){
+
+        customerDAO.saveCustomer( theCustomer );
     }
 
 }

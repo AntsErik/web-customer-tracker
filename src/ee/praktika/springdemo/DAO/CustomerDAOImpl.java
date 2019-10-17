@@ -1,4 +1,4 @@
-package ee.praktikaspringdemo.DAO;
+package ee.praktika.springdemo.DAO;
 
 import java.util.List;
 
@@ -23,14 +23,26 @@ public class CustomerDAOImpl implements CustomerDAO {
         //get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
 
-        //create a query
-        Query<Customer> theQuery = currentSession.createQuery( "from Customer", Customer.class );
+        //create a query .. sort by last name
+        Query<Customer> theQuery = currentSession.createQuery( "from Customer order by lastName",
+            Customer.class );
 
         //and get the list of Customers from the query
         List<Customer> customers = theQuery.getResultList();
 
         //return the retrieved List of Customers
         return customers;
+    }
+
+    @Override
+    public void saveCustomer( Customer theCustomer ){
+
+        //get the current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
+
+        //save the customer
+        currentSession.save( theCustomer );
+
     }
 
 }
