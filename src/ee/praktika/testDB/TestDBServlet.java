@@ -1,4 +1,4 @@
-package com.luv2code.testDB;
+package ee.praktika.testDB;
 
 import java.io.IOException;
 import java.io.PrintWriter;
